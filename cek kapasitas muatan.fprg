@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="latihan"/>
+        <attribute name="authors" value="ASUS"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2026-05-02 02:23:19 AM"/>
+        <attribute name="created" value="QVNVUztMQVBUT1AtUlE4Nk40SVY7MjAyNi0wNS0wMTswOTowNzowOCBQTTsyNjcx"/>
+        <attribute name="edited" value="QVNVUztMQVBUT1AtUlE4Nk40SVY7MjAyNi0wNS0wMjswMjoyMzoxOSBBTTsyOzI3NTk="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="maxkapasitas" type="Real" array="True" size="5"/>
+            <declare name="i, berat, totalmuatan, nomor" type="Real" array="False" size=""/>
+            <declare name="kargo" type="String" array="False" size=""/>
+            <output expression="&quot;Masukkan kapasitas max. untuk setiap setiap truk&quot;" newline="True"/>
+            <for variable="i" start="0" end="4" direction="inc" step="1">
+                <input variable="maxkapasitas[i]"/>
+            </for>
+            <output expression="&quot;Apakah ada kargo yang ingin dimuat&quot;" newline="True"/>
+            <input variable="kargo"/>
+            <while expression="kargo = &quot;ada&quot;">
+                <input variable="i"/>
+                <input variable="berat"/>
+                <if expression="berat &lt;= maxkapasitas[i]">
+                    <then>
+                        <assign variable="maxkapasitas[i]" expression="maxkapasitas[i] - berat"/>
+                        <output expression="&quot;Sisa muatan pada truk &quot; &amp; i &amp; &quot; sebanyak &quot; &amp; maxkapasitas[i]" newline="True"/>
+                    </then>
+                    <else>
+                        <output expression="&quot;Overload !!! berat melebih kapasitas mauatan&quot;" newline="True"/>
+                    </else>
+                </if>
+                <input variable="kargo"/>
+            </while>
+            <for variable="i" start="0" end="4" direction="inc" step="1">
+                <output expression="&quot;Proses muatan selesai, sisa muatan truk &quot; &amp; i &amp; &quot; sebanyak &quot; &amp; maxkapasitas[i]" newline="True"/>
+            </for>
+        </body>
+    </function>
+</flowgorithm>
